@@ -1,7 +1,7 @@
 package Figuras;
 import java.util.Scanner;
 
-public class Instrucciones {
+public class Process {
 	public static void main(String[] args) {
 		Cuadrado calculoCuad = new Cuadrado();
 		Circulo calculoCirc = new Circulo();
