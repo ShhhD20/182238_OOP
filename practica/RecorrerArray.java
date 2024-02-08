@@ -1,0 +1,10 @@
+package practica;
+
+public class RecorrerArray {
+	public int exe(int pos) {
+		int arreglo[] = {5,8,6,3,7};
+		if(pos == 5) {
+			return array[5];
+		}
+	}
+}
