@@ -1,8 +1,6 @@
-import java.io.DataOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -10,13 +8,12 @@ public class Instrucciones {
 	 public void exe(int inicio) {
 		 File archivo, nuevo;
 		 String filePath, data, fileName;
-		 String[] trueData, title, trueTitle;
+		 String[] trueData, title = null;
 		 int[] array = new int[3000];
 		 
-		 filePath = "D:\\Users\\182238\\Downloads";
+		 filePath = "C:\\Users\\silen\\Downloads";
 		 fileName = "182238.txt";
 		 nuevo = new File(fileName);
-		 FileOutputStream outFileStream;
 		
 		 for(int c = 0; c < 3000; c++) {
 			 array[c] = 0;
@@ -49,12 +46,8 @@ public class Instrucciones {
 					 if(a == 0) {
 						 data = data.substring(10);
 						 title = data.split(",");
-						 System.out.print(title);
 					 }
 				 }
-			 }
-			 for(int d = 0; d < 3000; d++) {
-				 System.out.print(array[d] + " ");
 			 }
 			 lector.close();
 		 }catch (FileNotFoundException e) {
@@ -72,26 +65,15 @@ public class Instrucciones {
 			 }
 		 }
 		 try {
-			outFileStream = new FileOutputStream(nuevo);
-			DataOutputStream outDataStream = new DataOutputStream(outFileStream);
-			ObjectOutputStream outObjectStream;
-			try {
-				outObjectStream = new ObjectOutputStream(outDataStream);
-				
-				outObjectStream.writeObject(title[0]);
-			} catch (IOException e) {
-				e.printStackTrace();
+			PrintWriter escribir = new PrintWriter(nuevo);
+			for(int e = 0; e < 3000; e++) {
+				escribir.write(title[e] + ": " + array[e] + "\n\r");
 			}
 			
-			try {
-				outDataStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			escribir.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		 
 	 }
 }
